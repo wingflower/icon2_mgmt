@@ -29,6 +29,7 @@ class SQLAlchemy:
             pool_recycle=pool_recycle,
             pool_pre_ping=True,
         )
+        Base.metadata.create_all(self._engine)
         self._session = sessionmaker(autocommit=False, autoflush=False, bind=self._engine)
 
         @app.on_event("startup")
