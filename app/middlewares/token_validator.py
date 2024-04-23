@@ -82,19 +82,17 @@ async def access_control(request: Request, call_next):
                 response = await call_next(request)
                 return response
             else:
-                if "Authorization" in headers.keys():
-                    token_info = await token_decode(access_token=headers.get("Authorization"))
+                if "authorization" in headers.keys():
+                    token_info = await token_decode(access_token=headers.get("authorization"))
                     request.state.user = UserToken(**token_info)
                 else:
-                    if "Authorization" not in headers.keys():
+                    if "authorization" not in headers.keys():
                         raise ex.NotAuthorized()
         else:
-            # cookies["Authorization"] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJmbG93ZXJAaWNvbmxvb3AuY29tIiwibmFtZSI6bnVsbCwicGhvbmVfbnVtYmVyIjpudWxsLCJwcm9maWxlX2ltZyI6bnVsbCwic25zX3R5cGUiOm51bGx9.qx3nfpSPnHabZIPX7JCNksasNlB0mX9GJKYGJ9kprYg"
-
-            if "Authorization" not in cookies.keys():
+            if "authorization" not in cookies.keys():
                 raise ex.NotAuthorized()
 
-            token_info = await token_decode(access_token=cookies.get("Authorization"))
+            token_info = await token_decode(access_token=cookies.get("authorization"))
             request.state.user = UserToken(**token_info)
         response = await call_next(request)
         await api_logger(request=request, response=response)
