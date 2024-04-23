@@ -10,7 +10,8 @@ class Checker(BaseModel):
     name: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True
 
 
 class AddCheckUrl(Checker):

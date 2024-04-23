@@ -10,7 +10,8 @@ class AddApiKey(BaseModel):
     memo: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True
 
 
 class GetApiKeyList(AddApiKey):
@@ -31,4 +32,5 @@ class GetAPIWhiteLists(CreateAPIWhiteLists):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True

@@ -7,7 +7,9 @@ class QA(BaseModel):
     name: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        from_attributes = True
+        # orm_mode = True
 
 
 class AddQA(QA):
