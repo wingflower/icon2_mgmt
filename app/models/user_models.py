@@ -30,13 +30,14 @@ class MessageOk(BaseModel):
 class UserToken(BaseModel):
     id: int
     email: str = None
-    name: str = None
-    phone_number: str = None
-    profile_img: str = None
-    sns_type: str = None
+    # name: str = None
+    # phone_number: str = None
+    # profile_img: str = None
+    # sns_type: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True
 
 
 class UserMe(BaseModel):
@@ -48,14 +49,16 @@ class UserMe(BaseModel):
     sns_type: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True
 
 
 class AddApiKey(BaseModel):
     user_memo: str = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True
 
 
 class GetApiKeyList(AddApiKey):
@@ -76,4 +79,5 @@ class GetAPIWhiteLists(CreateAPIWhiteLists):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+        # orm_mode = True
