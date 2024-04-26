@@ -2,7 +2,7 @@ FROM python:3.10-slim
 
 WORKDIR /app/was
 
-COPY ./requirements.txt /app/was/requirements.txt
+COPY ./app/requirements.txt /app/was/requirements.txt
  
 RUN apt-get update
 RUN apt-get install -y python3-dev default-libmysqlclient-dev build-essential pkg-config
